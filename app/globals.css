@@ -1,26 +1,529 @@
-@import "tailwindcss";
+/* ═══════════════════════════════════════════════════════════════
+   GODWIN TECH SOLUTIONS — Global Styles
+   Import order matters:
+   1. Tailwind directives
+   2. CSS custom properties
+   3. Base element resets & defaults
+   4. Custom utility classes
+   5. Animation overrides
+═══════════════════════════════════════════════════════════════ */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─────────────────────────────────────────
+   CSS CUSTOM PROPERTIES
+   Available globally — matches Tailwind config
+───────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Brand Colors */
+    --color-brand:        #0ea5e9;
+    --color-brand-light:  #38bdf8;
+    --color-brand-dark:   #0369a1;
+    --color-brand-muted:  #bae6fd;
+    --color-brand-glow:   #7dd3fc;
+
+    /* Surfaces */
+    --color-surface:          #ffffff;
+    --color-surface-muted:    #f8fafc;
+    --color-surface-dark:     #0f172a;
+    --color-surface-darker:   #020617;
+
+    /* Text */
+    --color-text-primary:     #0f172a;
+    --color-text-secondary:   #475569;
+    --color-text-muted:       #94a3b8;
+    --color-text-inverted:    #f8fafc;
+
+    /* Borders */
+    --color-border:           #e2e8f0;
+    --color-border-dark:      rgba(255, 255, 255, 0.08);
+    --color-border-brand:     rgba(14, 165, 233, 0.3);
+
+    /* Shadows */
+    --shadow-brand:           0 4px 24px 0 rgba(14, 165, 233, 0.25);
+    --shadow-brand-lg:        0 8px 48px 0 rgba(14, 165, 233, 0.35);
+    --shadow-glow:            0 0 20px rgba(14, 165, 233, 0.4),
+    0 0 60px rgba(14, 165, 233, 0.15);
+
+    /* Typography */
+    --font-display:     "Syne", system-ui, sans-serif;
+    --font-body:        "DM Sans", system-ui, sans-serif;
+    --font-mono:        "JetBrains Mono", "Courier New", monospace;
+
+    /* Spacing */
+    --section-padding-y:    5rem;
+    --section-padding-x:    1.5rem;
+    --container-max-width:  80rem;
+    --navbar-height:        4.5rem;
+
+    /* Transitions */
+    --transition-fast:      150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base:      250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow:      400ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring:    350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* Border Radius */
+    --radius-sm:    0.375rem;
+    --radius-base:  0.5rem;
+    --radius-md:    0.75rem;
+    --radius-lg:    1rem;
+    --radius-xl:    1.5rem;
+    --radius-full:  9999px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────
+   BASE ELEMENT STYLES
+───────────────────────────────────────── */
+
+@layer base {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Body defaults */
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings — always use display font */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  h1 { font-size: clamp(2.25rem, 5vw, 4.5rem); }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 3rem);  }
+  h3 { font-size: clamp(1.25rem, 2.5vw, 1.875rem); }
+  h4 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+
+  /* Paragraphs */
+  p {
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  /* Code */
+  code, kbd, pre, samp {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  /* Images */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Focus visible — accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Remove focus for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Scrollbar — WebKit */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(14, 165, 233, 0.3);
+    border-radius: var(--radius-full);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(14, 165, 233, 0.6);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(14, 165, 233, 0.3) transparent;
+  }
+
+  /* Selection colour */
+  ::selection {
+    background-color: rgba(14, 165, 233, 0.2);
+    color: #0369a1;
+  }
+}
+
+/* ─────────────────────────────────────────
+   COMPONENT LAYER
+   Reusable class patterns composed from utilities
+───────────────────────────────────────── */
+
+@layer components {
+
+  /* ── Container ── */
+  .container-gts {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+  }
+
+  /* ── Section ── */
+  .section {
+    @apply py-20 lg:py-28;
+  }
+
+  .section-sm {
+    @apply py-12 lg:py-16;
+  }
+
+  /* ── Section Label (eyebrow text above headings) ── */
+  .section-label {
+    @apply inline-flex items-center gap-2
+    text-sm font-semibold tracking-widest uppercase
+    text-brand font-body;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply block w-6 h-0.5 bg-brand rounded-full;
+  }
+
+  /* ── Section Heading ── */
+  .section-heading {
+    @apply font-display font-bold tracking-tight text-neutral-900;
+  }
+
+  .section-subheading {
+    @apply font-body text-lg text-neutral-500 leading-relaxed max-w-2xl;
+  }
+
+  /* ── Gradient Text ── */
+  .gradient-text {
+    @apply bg-gradient-text bg-clip-text text-transparent;
+  }
+
+  .gradient-text-white {
+    @apply bg-gradient-text-white bg-clip-text text-transparent;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+    font-body font-semibold rounded-xl
+    transition-all duration-250
+    focus-visible:outline-none focus-visible:ring-2
+    focus-visible:ring-brand focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none
+    select-none cursor-pointer;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-primary {
+    @apply btn btn-md
+    bg-brand text-white
+    hover:bg-brand-dark
+    shadow-brand hover:shadow-brand-lg
+    hover:-translate-y-0.5
+    active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply btn btn-md
+    bg-white text-neutral-900
+    border border-neutral-200
+    hover:border-brand hover:text-brand
+    hover:shadow-brand-sm
+    hover:-translate-y-0.5
+    active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply btn btn-md
+    bg-transparent text-brand
+    border border-brand/40
+    hover:bg-brand hover:text-white hover:border-brand
+    hover:-translate-y-0.5
+    active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply btn btn-md
+    bg-transparent text-neutral-600
+    hover:bg-neutral-100 hover:text-neutral-900;
+  }
+
+  .btn-dark {
+    @apply btn btn-md
+    bg-neutral-900 text-white
+    hover:bg-neutral-800
+    hover:-translate-y-0.5;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply rounded-2xl bg-white border border-neutral-100
+    shadow-card transition-all duration-300
+    hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .card-dark {
+    @apply rounded-2xl bg-neutral-900 border border-white/5
+    shadow-dark transition-all duration-300
+    hover:border-brand/20 hover:shadow-brand-sm hover:-translate-y-1;
+  }
+
+  .card-glass {
+    @apply rounded-2xl
+    bg-white/5 backdrop-blur-md
+    border border-white/10
+    transition-all duration-300
+    hover:bg-white/8 hover:border-brand/30;
+  }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center gap-1.5
+    px-3 py-1 rounded-full
+    text-xs font-semibold font-body
+    tracking-wide;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand/10 text-brand;
+  }
+
+  .badge-dark {
+    @apply badge bg-neutral-800 text-neutral-300;
+  }
+
+  .badge-white {
+    @apply badge bg-white/10 text-white border border-white/20;
+  }
+
+  /* ── Input ── */
+  .input {
+    @apply w-full rounded-xl border border-neutral-200
+    bg-white px-4 py-3
+    font-body text-base text-neutral-900
+    placeholder:text-neutral-400
+    transition-all duration-250
+    focus:outline-none focus:ring-2 focus:ring-brand/40
+    focus:border-brand
+    disabled:opacity-50 disabled:bg-neutral-50;
+  }
+
+  .input-dark {
+    @apply input
+    bg-neutral-900 border-white/10 text-white
+    placeholder:text-neutral-500
+    focus:border-brand/60 focus:ring-brand/20;
+  }
+
+  .textarea {
+    @apply input resize-none min-h-[120px];
+  }
+
+  .textarea-dark {
+    @apply input-dark resize-none min-h-[120px];
+  }
+
+  .label {
+    @apply block text-sm font-medium font-body text-neutral-700 mb-1.5;
+  }
+
+  .label-dark {
+    @apply label text-neutral-300;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    @apply w-full h-px bg-neutral-100;
+  }
+
+  .divider-dark {
+    @apply w-full h-px bg-white/5;
+  }
+
+  /* ── Glow ring around elements ── */
+  .glow-ring {
+    @apply ring-2 ring-brand/30 ring-offset-2 ring-offset-transparent;
+  }
+
+  /* ── Noise texture overlay ── */
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0.4;
+  }
+
+  /* ── Shimmer loading skeleton ── */
+  .skeleton {
+    @apply animate-shimmer bg-gradient-to-r
+    from-neutral-100 via-neutral-200 to-neutral-100
+    bg-[length:200%_100%]
+    rounded-lg;
+  }
+
+  .skeleton-dark {
+    @apply animate-shimmer bg-gradient-to-r
+    from-neutral-800 via-neutral-700 to-neutral-800
+    bg-[length:200%_100%]
+    rounded-lg;
+  }
+}
+
+/* ─────────────────────────────────────────
+   UTILITY LAYER
+   One-off helpers not in Tailwind config
+───────────────────────────────────────── */
+
+@layer utilities {
+
+  /* Fluid type scaling using clamp */
+  .text-fluid-sm  { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+  .text-fluid-md  { font-size: clamp(1rem, 2vw, 1.25rem); }
+  .text-fluid-lg  { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+  .text-fluid-xl  { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+  .text-fluid-2xl { font-size: clamp(2rem, 5vw, 3.75rem); }
+  .text-fluid-3xl { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+
+  /* Writing modes */
+  .writing-vertical-lr { writing-mode: vertical-lr; }
+  .writing-vertical-rl { writing-mode: vertical-rl; }
+
+  /* Balanced text */
+  .text-balance  { text-wrap: balance; }
+  .text-pretty   { text-wrap: pretty; }
+
+  /* Hide scrollbar but keep scroll functionality */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Pause animation on hover (for tickers / carousels) */
+  .pause-on-hover:hover > * {
+    animation-play-state: paused;
+  }
+
+  /* Full bleed — breaks out of container */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  /* Backdrop blur variants */
+  .backdrop-blur-xs { backdrop-filter: blur(2px); }
+
+  /* Gradient border trick using pseudo-element */
+  .border-gradient {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+            135deg,
+            rgba(14, 165, 233, 0.5),
+            rgba(3, 105, 161, 0.1)
+    );
+    z-index: -1;
+  }
+
+  /* Mesh gradient background */
+  .bg-mesh {
+    background-color: #020617;
+    background-image:
+            radial-gradient(at 40% 20%, hsla(200, 100%, 50%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 80% 0%,  hsla(200, 80%,  40%, 0.08) 0px, transparent 50%),
+            radial-gradient(at 0%  50%, hsla(210, 100%, 30%, 0.08) 0px, transparent 50%),
+            radial-gradient(at 80% 50%, hsla(190, 100%, 40%, 0.05) 0px, transparent 50%),
+            radial-gradient(at 0%  100%, hsla(200, 100%, 50%, 0.06) 0px, transparent 50%);
+  }
+
+  /* Animated gradient border on hover */
+  .hover-border-glow {
+    transition: box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  }
+  .hover-border-glow:hover {
+    border-color: rgba(14, 165, 233, 0.4);
+    box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.15),
+    0 4px 24px rgba(14, 165, 233, 0.15);
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+
+  /* Perspective for 3D transforms */
+  .perspective-1000 { perspective: 1000px; }
+  .perspective-2000 { perspective: 2000px; }
+  .transform-style-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
 }

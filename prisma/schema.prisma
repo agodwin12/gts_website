@@ -1,0 +1,114 @@
+// ═══════════════════════════════════════════════════════════════
+//   GODWIN TECH SOLUTIONS — Prisma Schema
+//   Database: PostgreSQL
+//   Purpose:  Projects showcase backend (the ONLY backend feature)
+// ═══════════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+
+}
+
+// ─────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────
+
+enum ProjectStatus {
+  PUBLISHED   // Visible on the website
+  DRAFT       // Hidden — work in progress
+  ARCHIVED    // Hidden — no longer featured
+}
+
+enum ProjectCategory {
+  WEB_DEVELOPMENT
+  APP_DEVELOPMENT
+  CLOUD_SERVICES
+  ECOMMERCE
+  UI_UX_DESIGN
+  DIGITAL_MARKETING
+  IT_CONSULTANCY
+  API_INTEGRATION
+  ENTERPRISE_SOFTWARE
+  AUTOMATION_AI
+  CYBERSECURITY
+  BRANDING
+}
+
+// ─────────────────────────────────────────
+// PROJECT MODEL
+// Core showcase model — every realised project GTS has delivered
+// ─────────────────────────────────────────
+
+model Project {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // ── Core Info ──────────────────────────
+  title       String               // e.g. "Maviance Payment Dashboard"
+  slug        String   @unique     // e.g. "maviance-payment-dashboard" (used in URL)
+  summary     String               // Short one-liner shown on the card
+  description String               // Full rich description shown on the detail page
+
+  // ── Categorisation ─────────────────────
+  category    ProjectCategory      // Primary category
+  tags        String[]             // e.g. ["React", "Node.js", "PostgreSQL", "Stripe"]
+  status      ProjectStatus @default(DRAFT)
+
+  // ── Client Info ────────────────────────
+  clientName    String?            // e.g. "Maviance PLC"
+  clientCountry String?            // e.g. "Cameroon"
+  clientIndustry String?           // e.g. "Fintech"
+
+  // ── Media ──────────────────────────────
+  coverImage    String             // Main image URL (Cloudinary)
+  images        String[]           // Additional screenshot URLs
+  videoUrl      String?            // Optional demo video URL
+
+  // ── Project Details ────────────────────
+  techStack     String[]           // e.g. ["Next.js", "Tailwind", "Prisma"]
+  duration      String?            // e.g. "3 months"
+  deliveredAt   DateTime?          // When the project was delivered
+
+  // ── URLs ───────────────────────────────
+  liveUrl       String?            // Live website / app URL
+  caseStudyUrl  String?            // External case study (if any)
+  githubUrl     String?            // GitHub repo (if public)
+
+  // ── Display Controls ───────────────────
+  featured      Boolean @default(false)   // Show in hero / top of portfolio
+  order         Int     @default(0)       // Manual sort order (lower = first)
+
+  // ── SEO ────────────────────────────────
+  metaTitle       String?          // SEO title override
+  metaDescription String?          // SEO description override
+
+  @@index([status])
+  @@index([category])
+  @@index([featured])
+  @@index([slug])
+  @@map("projects")
+}
+
+// ─────────────────────────────────────────
+// ADMIN SESSION MODEL
+// Lightweight session tracking for the admin panel
+// ─────────────────────────────────────────
+
+model AdminSession {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  token     String   @unique     // Hashed JWT token
+  ipAddress String?              // IP of the admin login
+  userAgent String?              // Browser/device info
+
+  @@index([token])
+  @@map("admin_sessions")
+}
