@@ -92,10 +92,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
 
-  eslint: {
-    dirs:               ["app", "components", "lib", "hooks", "utils"],
-    ignoreDuringBuilds: false,
-  },
+
 
   env: {
     NEXT_PUBLIC_SITE_NAME:        "Godwin Tech Solutions",
