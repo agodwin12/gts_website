@@ -47,7 +47,7 @@ const staticRoutes: MetadataRoute.Sitemap = [
     // Individual service pages
     ...[
         "web-development",
-        "app-development",
+        "cloud-services",
         "cloud-services",
         "ecommerce",
         "ui-ux-design",

@@ -81,7 +81,7 @@ function MegaMenu({ items }: { items: NavItem[] }) {
         >
             {items.map((item) => (
                 <Link
-                    key={item.href}
+                    key={item.label}
                     href={item.href}
                     className={cn(
                         "group flex items-start gap-3 p-3 rounded-xl",
@@ -278,7 +278,7 @@ function MobileMenu({
 
                                 return (
                                     <Link
-                                        key={item.href}
+                                        key={item.label}
                                         href={item.href}
                                         onClick={onClose}
                                         className={cn(

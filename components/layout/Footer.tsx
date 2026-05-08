@@ -123,7 +123,7 @@ function WhatsAppStrip() {
                         Chat with us on WhatsApp
                     </p>
                     <p className="font-body text-xs text-neutral-400 mt-0.5">
-                        Quick replies during business hours · Yaoundé, Cameroon (WAT)
+                        Quick replies during business hours · Douala, Cameroon (WAT)
                     </p>
                 </div>
             </div>
@@ -171,7 +171,7 @@ function ContactInfo() {
             icon:  <MapPin  size={14} />,
             label: "Location",
             value: siteConfig.location,
-            href:  "https://maps.google.com/?q=Yaoundé,Cameroon",
+            href:  "https://maps.google.com/?q=Douala,Cameroon",
         },
     ];
 

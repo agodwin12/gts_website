@@ -110,7 +110,7 @@ const milestones = [
     {
         year:  "2020",
         title: "Founded",
-        body:  "GTS was founded in Yaoundé, Cameroon with a vision to deliver world-class technology solutions from Africa.",
+        body:  "GTS was founded in Douala, Cameroon with a vision to deliver world-class technology solutions from Africa.",
     },
     {
         year:  "2021",
@@ -231,7 +231,7 @@ export default function AboutPage() {
 
                             <div className="space-y-4">
                                 {[
-                                    `Founded by a passionate full stack developer and IT consultant with experience across web development, cloud systems, mobile applications, AI integrations, UI/UX design, and digital infrastructure, Godwin Tech Solutions was built to help businesses transform ideas into scalable digital products.`,
+                                    `Founded by Awah Wilbroad Nde a passionate full stack developer and IT consultant with experience across web development, cloud systems, mobile applications, AI integrations, UI/UX design, and digital infrastructure, Godwin Tech Solutions was built to help businesses transform ideas into scalable digital products and marketed by Djousse Chimelle.`,
                                     `We specialize in creating modern websites, powerful web applications, mobile apps, cloud-powered systems, and intelligent business solutions that combine performance with clean user experience. From startups looking for their first online presence to businesses ready to automate operations and scale, GTS delivers technology that works beautifully and performs reliably.`,
                                     `Our approach blends technical precision with creative thinking. Every project is crafted with attention to speed, security, responsiveness, scalability, and modern design standards.`,
                                 ].map((para, i) => (

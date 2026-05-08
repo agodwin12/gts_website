@@ -65,7 +65,7 @@ const featuredProjects = [
         id:            "3",
         title:         "AfriRide Driver & Passenger App",
         slug:          "afriride-driver-passenger-app",
-        summary:       "Cross-platform ride-hailing app for Yaoundé and Douala with real-time GPS and Mobile Money.",
+        summary:       "Cross-platform ride-hailing app for Douala and Douala with real-time GPS and Mobile Money.",
         category:      "APP_DEVELOPMENT"  as ProjectCategory,
         tags:          ["React Native", "Expo", "Google Maps"],
         coverImage:    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",

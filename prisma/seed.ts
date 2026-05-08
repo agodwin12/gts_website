@@ -82,7 +82,7 @@ async function main() {
                 title: "AfriRide Driver & Passenger App",
                 slug: "afriride-driver-passenger-app",
                 summary:
-                    "Cross-platform ride-hailing mobile app for Yaoundé and Douala with real-time GPS tracking and Mobile Money payments.",
+                    "Cross-platform ride-hailing mobile app for Douala and Douala with real-time GPS tracking and Mobile Money payments.",
                 description:
                     "AfriRide approached us to build a full ride-hailing solution for the Cameroonian market. We delivered two React Native apps — one for drivers and one for passengers — with real-time GPS tracking via Google Maps SDK, dynamic pricing, in-app chat, and MTN/Orange Mobile Money integration. The driver app includes earnings dashboards and trip history. The passenger app features ride scheduling and SOS emergency alerts.",
                 category: ProjectCategory.APP_DEVELOPMENT,
@@ -171,7 +171,7 @@ async function main() {
                 category: ProjectCategory.ENTERPRISE_SOFTWARE,
                 tags: ["Next.js", "PostgreSQL", "Mobile Money", "Bilingual", "Role-based Access"],
                 status: ProjectStatus.PUBLISHED,
-                clientName: "Bilingual Academy Yaoundé",
+                clientName: "Bilingual Academy Douala",
                 clientCountry: "Cameroon",
                 clientIndustry: "Education",
                 coverImage: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80",
@@ -333,7 +333,7 @@ async function main() {
                 summary:
                     "Complete brand identity design for an organic food startup — logo, visual system, packaging, and digital assets.",
                 description:
-                    "AgroVerde is an organic food startup launching across Central Africa. We created their entire brand identity from scratch: logo design (3 concepts, final delivery), color system, typography guide, packaging design for 12 product SKUs, social media templates, business cards, and a brand book. The identity conveys freshness, trust, and African pride — using earth tones, clean typography, and local visual cues. The brand launched to overwhelmingly positive reception at the Yaoundé Food Expo 2024.",
+                    "AgroVerde is an organic food startup launching across Central Africa. We created their entire brand identity from scratch: logo design (3 concepts, final delivery), color system, typography guide, packaging design for 12 product SKUs, social media templates, business cards, and a brand book. The identity conveys freshness, trust, and African pride — using earth tones, clean typography, and local visual cues. The brand launched to overwhelmingly positive reception at the Douala Food Expo 2024.",
                 category: ProjectCategory.BRANDING,
                 tags: ["Logo Design", "Brand Identity", "Packaging", "Figma", "Illustrator", "Brand Book"],
                 status: ProjectStatus.PUBLISHED,

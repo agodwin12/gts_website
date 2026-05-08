@@ -202,7 +202,7 @@ function buildAutoReplyEmail(name: string): string {
             <p style="margin:0;font-size:14px;color:#94a3b8;">
               Best regards,<br/>
               <strong style="color:#0f172a;">The GTS Team</strong><br/>
-              <span style="color:#0ea5e9;">Godwin Tech Solutions</span> · Yaoundé, Cameroon
+              <span style="color:#0ea5e9;">Godwin Tech Solutions</span> · Douala, Cameroon
             </p>
           </td>
         </tr>
@@ -211,7 +211,7 @@ function buildAutoReplyEmail(name: string): string {
         <tr>
           <td style="background:#f8fafc;padding:20px 40px;border-top:1px solid #e2e8f0;">
             <p style="margin:0;font-size:12px;color:#94a3b8;text-align:center;">
-              © ${new Date().getFullYear()} Godwin Tech Solutions · Yaoundé, Cameroon<br/>
+              © ${new Date().getFullYear()} Godwin Tech Solutions · Douala, Cameroon<br/>
               <a href="https://godwintechsolutions.com" style="color:#0ea5e9;text-decoration:none;">godwintechsolutions.com</a>
             </p>
           </td>

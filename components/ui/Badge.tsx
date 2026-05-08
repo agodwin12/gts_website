@@ -266,15 +266,15 @@ export function StatusBadge({ status, className, ...props }: StatusBadgeProps) {
 // Pre-styled for tech stack chip display
 // ─────────────────────────────────────────
 
-interface TechBadgeProps extends Omit<BadgeProps, "variant" | "size"> {
+interface TechBadgeProps extends Omit<BadgeProps, "variant"> {
     name: string;
 }
 
-export function TechBadge({ name, className, ...props }: TechBadgeProps) {
+export function TechBadge({ name, className, size = "sm", ...props }: TechBadgeProps) {
     return (
         <Badge
             variant="dark"
-            size="sm"
+            size={size}
             className={cn(
                 "font-mono text-[11px] tracking-tight",
                 "bg-neutral-900 border-neutral-700/50 text-neutral-300",

@@ -254,7 +254,7 @@ export default async function ProjectPage({ params }: PageProps) {
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
                                         {project.techStack.map((tech) => (
-                                            <TechBadge key={tech} name={tech} size="md" />
+                                            <TechBadge key={tech} name={tech} />
                                         ))}
                                     </div>
                                 </div>

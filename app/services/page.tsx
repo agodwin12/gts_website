@@ -202,7 +202,7 @@ const faqs = [
     },
     {
         q: "Do you work with clients outside Cameroon?",
-        a: "Absolutely. While we're based in Yaoundé, we work with clients across Africa and internationally. We communicate fluently in English and French, and our processes are fully remote-friendly.",
+        a: "Absolutely. While we're based in Douala, we work with clients across Africa and internationally. We communicate fluently in English and French, and our processes are fully remote-friendly.",
     },
     {
         q: "What payment methods do you accept?",

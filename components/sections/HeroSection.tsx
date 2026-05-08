@@ -399,7 +399,7 @@ export default function HeroSection() {
                         {/* Eyebrow label */}
                         <motion.div variants={fadeIn}>
                             <SectionLabel variant="dark">
-                                🇨🇲 &nbsp;Based in Yaoundé, Cameroon · Serving Africa & Beyond
+                                🇨🇲 &nbsp;Based in Douala, Cameroon · Serving Africa & Beyond
                             </SectionLabel>
                         </motion.div>
 

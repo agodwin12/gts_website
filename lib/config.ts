@@ -30,7 +30,7 @@ export const siteConfig: SiteConfig = {
         process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@godwintechsolutions.com",
     phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+237 000 000 000",
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+237000000000",
-    location: process.env.NEXT_PUBLIC_LOCATION || "Yaoundé, Cameroon",
+    location: process.env.NEXT_PUBLIC_LOCATION || "Douala, Cameroon",
     foundedYear: 2020,
     socials: {
         twitter:
@@ -73,7 +73,7 @@ export const navItems: NavItem[] = [
             },
             {
                 label: "App Development",
-                href: "/services/app-development",
+                href: "/services/cloud-services",
                 description: "iOS, Android & cross-platform mobile apps",
                 icon: "Smartphone",
             },
@@ -167,7 +167,7 @@ export const footerSections: FooterSection[] = [
         title: "Services",
         links: [
             { label: "Web Development",    href: "/services/web-development" },
-            { label: "App Development",    href: "/services/app-development" },
+            { label: "App Development",    href: "/services/cloud-services" },
             { label: "Cloud Services",     href: "/services/cloud-services" },
             { label: "E-Commerce",         href: "/services/ecommerce" },
             { label: "UI/UX Design",       href: "/services/ui-ux-design" },
@@ -262,7 +262,7 @@ export const services: ServiceItem[] = [
         description:
             "Native and cross-platform mobile apps for iOS and Android — built for performance, designed for users, and engineered for growth.",
         icon: "Smartphone",
-        href: "/services/app-development",
+        href: "/services/cloud-services",
         color: "text-violet-500",
         features: [
             "Android & iOS development",
@@ -548,7 +548,7 @@ export const testimonials: TestimonialItem[] = [
         id: "t6",
         name: "Patience Fongang",
         role: "Principal",
-        company: "Bilingual Academy Yaoundé",
+        company: "Bilingual Academy Douala",
         country: "Cameroon",
         quote:
             "From admissions to fee payments, everything is now digital. GTS understood our bilingual environment perfectly and built a system that our staff adopted with no training issues.",
@@ -566,10 +566,15 @@ export const techBadges: TechBadge[] = [
     { name: "Next.js",        category: "frontend" },
     { name: "React",          category: "frontend" },
     { name: "TypeScript",     category: "frontend" },
+    { name: "JavaScript",     category: "frontend" },
     { name: "Tailwind CSS",   category: "frontend" },
     { name: "React Native",   category: "mobile" },
+    { name: "Flutter",        category: "mobile" },
     { name: "Expo",           category: "mobile" },
     { name: "Node.js",        category: "backend" },
+    { name: "Python",         category: "backend" },
+    { name: "Django",         category: "backend" },
+    { name: "PHP Laravel",    category: "backend" },
     { name: "PostgreSQL",     category: "database" },
     { name: "Prisma",         category: "database" },
     { name: "Redis",          category: "database" },
@@ -583,4 +588,5 @@ export const techBadges: TechBadge[] = [
     { name: "OpenAI",         category: "tool" },
     { name: "Stripe",         category: "tool" },
     { name: "MTN MoMo API",   category: "tool" },
+    { name: "ORANGE Money API",   category: "tool" },
 ];

@@ -8,6 +8,8 @@ import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
+import ChatWidget      from "@/components/chat/ChatWidget";
+import SplashProvider  from "@/components/ui/SplashProvider";
 
 // ─────────────────────────────────────────
 // FONTS
@@ -90,6 +92,7 @@ export const metadata: Metadata = {
                 width: 1200,
                 height: 630,
                 alt: `${siteConfig.name} — Premium IT Services from Cameroon`,
+                type: "image/png",
             },
         ],
     },
@@ -271,8 +274,14 @@ export default function RootLayout({
             Skip to main content
         </a>
 
-        {/* Main content */}
-        <main id="main-content">{children}</main>
+        {/* Splash screen — shown once per session */}
+        <SplashProvider>
+            {/* Main content */}
+            <main id="main-content">{children}</main>
+        </SplashProvider>
+
+        {/* Evelyn — AI Chat Assistant (appears on every page) */}
+        <ChatWidget />
 
         {/* Toast notifications */}
         <Toaster

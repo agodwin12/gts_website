@@ -49,7 +49,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const serviceOptions = [
     { value: "",                    label: "Select a service..."      },
     { value: "web-development",     label: "Web Development"          },
-    { value: "app-development",     label: "App Development"          },
+    { value: "cloud-services",     label: "App Development"          },
     { value: "cloud-services",      label: "Cloud Services"           },
     { value: "ecommerce",           label: "E-Commerce Solutions"     },
     { value: "ui-ux-design",        label: "UI/UX Design"             },
@@ -96,7 +96,7 @@ const contactInfo = [
         icon:  <MapPin  size={18} />,
         label: "Location",
         value: siteConfig.location,
-        href:  "https://maps.google.com/?q=Yaoundé,Cameroon",
+        href:  "https://maps.google.com/?q=Douala,Cameroon",
         description: "Serving clients globally",
     },
     {
